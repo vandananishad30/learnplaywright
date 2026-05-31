@@ -1,0 +1,28 @@
+CNN for Image Classification in MATLAB
+
+Key components:
+- imageInputLayer([H W C]) - input size (height, width, channels)
+- convolution2dLayer(filterSize, numFilters) - conv layers
+- batchNormalizationLayer - speeds up training
+- reluLayer - activation function
+- maxPooling2dLayer(poolSize, 'Stride', S) - downsampling
+- fullyConnectedLayer(outputSize) - dense layer
+- dropoutLayer(rate) - prevents overfitting
+- softmaxLayer + classificationLayer - output
+
+Training options via trainingOptions():
+- 'sgdm' - stochastic gradient descent with momentum
+- InitialLearnRate - learning rate
+- MaxEpochs - training iterations
+- MiniBatchSize - samples per batch
+- ValidationData - for monitoring performance
+- 'Plots', 'training-progress' - live training plot
+
+Example flow:
+1. Load images with imageDatastore
+2. Split into train/validation with splitEachLabel
+3. Define layer graph
+4. Set trainingOptions
+5. Call trainNetwork
+6. Classify validation set with classify(net, data)
+7. Compute accuracy with mean(pred == actual)

@@ -1,0 +1,13 @@
+function normalizeJsBasicsLabel(label) {
+  const normalized = label
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return normalized ? "js-basic-" + normalized : "js-basic";
+}
+console.log(normalizeJsBasicsLabel(" Login Button "));
+console.log(normalizeJsBasicsLabel("User Profile: Edit!"));
+console.log(normalizeJsBasicsLabel("---Search@@Box---"));
+console.log(normalizeJsBasicsLabel(" "));
