@@ -1,0 +1,31 @@
+function filterSupportedJsBasicsTopics(topics) {
+  const aliases = {
+    node: "node",
+    runtime: "node",
+    v8: "v8",
+    engine: "v8",
+    npm: "npm",
+    "package-manager": "npm"
+  };
+
+  const result = [];
+
+  for (const topic of topics) {
+    const normalized = topic.trim().toLowerCase();
+    const canonical = aliases[normalized];
+
+    if (canonical && !result.includes(canonical)) {
+      result.push(canonical);
+    }
+  }
+
+  return result;
+}
+console.log(filterSupportedJsBasicsTopics(["NODE"," v8 ","unknown"]));
+// ["node","v8"]
+
+console.log(filterSupportedJsBasicsTopics(["node","runtime","node"]));
+// ["node"]
+
+console.log(filterSupportedJsBasicsTopics(["npm","node","v8"]));
+// ["npm","node","v8"]
